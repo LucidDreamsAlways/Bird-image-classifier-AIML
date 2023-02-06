@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            
+        }
+        img {
+            box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        table {
+            padding: 10px;
+        }
+        p, label {
+            text-align: center;
+        }
+    </style>
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Bird Image Recognition</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <h1>Bird Image Recognition</h1>
+            <hr>
+            <form action="http://localhost:9000/predict" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Select image</label>
+                    <input type="file" class="custom-file-input" name="imagefile" id="imagefile">
+                </div>
+                <button type="submit" class="btn-primary">Upload</button>
+            </form>
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <p> Original Image: </p>
+            <img src="data:image/png;base64,{{ img_data }}" id="img-upload" alt="img_data" class="img-upload" width=300px height=300px/>
+            <p> <label class="custom-file-label" for="image">This image belongs to the {{predict_data}} class</label> </p>
+        </div>
+    </div>
+</body>
+</html>
